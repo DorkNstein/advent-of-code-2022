@@ -16,10 +16,8 @@ const firstProblem = async () => {
         localSum += +each;
     }
 
-    console.log(max);
+    console.log(`First problem total: ${max}`);
 }
-
-firstProblem();
 
 const secondProblem = async () => {
     const arr = await readInputFile("./Dec1/input.txt");
@@ -44,7 +42,8 @@ const secondProblem = async () => {
         localSum += +each;
     }
 
-    console.log(max1 + max2 + max3);
+    console.log(`Second problem total: ${max1 + max2 + max3}`);
 }
 
+firstProblem();
 secondProblem();

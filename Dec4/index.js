@@ -9,12 +9,12 @@ const firstProblem = async () => {
         const [sec2Min, sec2Max] = section2;
 
         const completelyWithin = (+sec1Min <= +sec2Min && +sec1Max >= +sec2Max) || (+sec2Min <= +sec1Min && +sec2Max >= +sec1Max);
-        
+
         if (completelyWithin) {
             total += 1;
         }
     }
-    console.log(total);
+    console.log(`First problem total: ${total}`);
 }
 
 const secondProblem = async () => {
@@ -32,9 +32,8 @@ const secondProblem = async () => {
             total += 1;
         }
     }
-    console.log(total);
+    console.log(`Second problem total: ${total}`);
 }
 
 firstProblem();
-
 secondProblem();

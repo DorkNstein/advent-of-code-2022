@@ -23,10 +23,9 @@ const firstProblem = async () => {
 
         const playScore = myScore - oppScore === 1 || myScore - oppScore === -2 ? 6 : myScore - oppScore === 0 ? 3: 0;
         total += myScore + playScore;
-        // console.log({myScore, oppScore, playScore});
     }
 
-    console.log(total);
+    console.log(`First problem total: ${total}`);
 }
 
 const secondProblem = async () => {
@@ -55,18 +54,15 @@ const secondProblem = async () => {
     for (let i = 0; i < arr.length; i++) {
         const play = arr[i];
         const [oppPlay, myPlay] = play.split(" ");
-        // const myScore = myScoreMap[myPlay];
         const playScore = playScoreMap[myPlay];
         const oppScore = oppScoreMap[oppPlay];
 
         const myScore = playScore === 6 ? (oppScore % 3) + 1 : playScore === 3 ? oppScore: myScoreMap[myLossKeys[oppScore - 1]];
         total += myScore + playScore;
-        // console.log({myScore, oppScore, playScore});
     }
 
-    console.log(total);
+    console.log(`Second problem total: ${total}`);
 }
 
 firstProblem();
-
 secondProblem();

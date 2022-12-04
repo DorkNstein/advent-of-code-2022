@@ -17,7 +17,7 @@ const firstProblem = async () => {
             }
         }
     }
-    console.log(total);
+    console.log(`First problem total: ${total}`);
 }
 
 const secondProblem = async () => {
@@ -47,9 +47,8 @@ const secondProblem = async () => {
             }
         }
     }
-    console.log(total);
+    console.log(`Second problem total: ${total}`);
 }
 
 firstProblem();
-
 secondProblem();
