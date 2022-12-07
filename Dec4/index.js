@@ -26,9 +26,9 @@ const secondProblem = async () => {
         const [sec2Min, sec2Max] = section2;
 
         const completelyWithin = (+sec1Min <= +sec2Min && +sec1Max >= +sec2Max) || (+sec2Min <= +sec1Min && +sec2Max >= +sec1Max);
-        const completelyOutside = (+sec1Min < +sec2Min && +sec1Max < +sec2Min) || (+sec2Min < +sec1Min && +sec2Max < +sec1Min);
+        const completelyOutside = +sec1Max < +sec2Min || +sec2Max < +sec1Min;
 
-        if (completelyWithin || !completelyOutside) {
+        if (!completelyOutside) {
             total += 1;
         }
     }
