@@ -28,13 +28,45 @@ const firstProblem = async () => {
   console.log(`First problem: ${signalStrength}`);
 };
 
+const crtDraw = (cycle, register) => {
+  if ([register - 1, register, register + 1].includes(cycle)) {
+    return '#';
+  }
+  return '-';
+}
+const incrementCycle = (cycle, counter) => {
+  if (cycle % 40 === 0) {
+    cycle = 0;
+    counter += 1;
+  }
+  cycle += 1;
+  return [cycle, counter];
+}
 const secondProblem = async () => {
   let arr = await readInputFile("./Dec10/input.txt");
-
+  let register = 1;
+  let cycle = -1;
+  let counter = -1;
+  let printed = new Array(240).fill("-");
   for (let i = 0; i < arr.length; i++) {
+    [cycle, counter] = incrementCycle(cycle, counter);
+    printed[counter * 40 + cycle] = crtDraw(cycle, register);
+    if (arr[i] !== 'noop') {
+      [cycle, counter] = incrementCycle(cycle, counter);
+      printed[counter * 40 + cycle] = crtDraw(cycle, register);
+      const [/** addx */, add] = arr[i].split(" ");
+      register += +add;
+    }
   }
-  console.log(`Second problem: ${""}`);
+  let output = [];
+  const chunkSize = 40;
+  for (let i = 0; i < printed.length; i += chunkSize) {
+      const chunk = printed.slice(i, i + chunkSize);
+      output.push(chunk);
+  }
+  console.log("Second Problem:");
+  console.log(`${output.map(x => x.join("")).join('\n')}`);
 };
 
 firstProblem();
-// secondProblem();
+secondProblem();
